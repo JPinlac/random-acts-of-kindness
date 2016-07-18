@@ -95,5 +95,5 @@ module.exports = {
 	getSingleCheckIn: getSingleCheckIn,
 	checkIn: checkIn,
 	updateCheckIn: updateCheckIn,
-	removeCheckIn: remove:checkIn
+	removeCheckIn: removeCheckIn
 };
