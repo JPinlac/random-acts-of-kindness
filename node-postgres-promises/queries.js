@@ -6,18 +6,18 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-var connectionString = 'postgres://localhost:5432/puppies';
+var connectionString = 'postgres://postgres:super@localhost:5432/rak';
 var db = pgp(connectionString);
 
 // add query functions
-function getAllPuppies(req, res, next) {
-	db.any('select * from pups')
+function getAllCheckIns(req, res, next) {
+	db.any('select * from checkIn')
 		.then(function (data) {
 			res.status(200)
 			.json({
 				status: 'success',
 				data: data,
-				message: 'Retrieved ALL puppies'
+				message: 'Retrieved all check-ins'
 			});
 		})
 	.catch(function (err) {
@@ -25,15 +25,15 @@ function getAllPuppies(req, res, next) {
 	});
 }
 
-function getSinglePuppy(req, res, next) {
-	var pupID = parseInt(req.params.id);
-	db.one('select * from pups where id = $1', pupID)
+function getSingleCheckIn(req, res, next) {
+	var checkInId = parseInt(req.params.id);
+	db.one('select * from checkIn where id = $1', checkInId)
 		.then(function (data) {
 			res.status(200)
 			.json({
 				status: 'success',
 				data: data,
-				message: 'Retrieved ONE puppy'
+				message: 'Retrieved ONE check-in'
 			});
 		})
 	.catch(function (err) {
@@ -41,16 +41,16 @@ function getSinglePuppy(req, res, next) {
 	});
 }
 
-function createPuppy(req, res, next) {
+function checkIn(req, res, next) {
 	req.body.age = parseInt(req.body.age);
-	db.none('insert into pups(name, breed, age, sex)' +
-			'values(${name}, ${breed}, ${age}, ${sex})',
+	db.none('insert into checkIn(location, userId, descriptionProperty)' +
+			'values(${location}, ${userId}, ${descriptionProperty})',
 			req.body)
 		.then(function () {
 			res.status(200)
 			.json({
 				status: 'success',
-			message: 'Inserted one puppy'
+			message: 'Inserted ONE check-in'
 			});
 		})
 	.catch(function (err) {
@@ -58,15 +58,15 @@ function createPuppy(req, res, next) {
 	});
 }
 
-function updatePuppy(req, res, next) {
-	db.none('update pups set name=$1, breed=$2, age=$3, sex=$4 where id=$5',
-			[req.body.name, req.body.breed, parseInt(req.body.age),
-			req.body.sex, parseInt(req.params.id)])
+function updateCheckIn(req, res, next) {
+	db.none('update checkIn set location=$1, userId=$2, descriptionProperty=$3 where id=$4',
+			[req.body.location, req.body.userId,
+			req.body.descriptionProperty, parseInt(req.params.id)])
 		.then(function () {
 			res.status(200)
 			.json({
 				status: 'success',
-			message: 'Updated puppy'
+			message: 'Updated check-in'
 			});
 		})
 	.catch(function (err) {
@@ -74,15 +74,15 @@ function updatePuppy(req, res, next) {
 	});
 }
 
-function removePuppy(req, res, next) {
-	var pupID = parseInt(req.params.id);
-	db.result('delete from pups where id = $1', pupID)
+function removeCheckIn(req, res, next) {
+	var checkInId = parseInt(req.params.id);
+	db.result('delete from checkIn where id = $1', checkInId)
 		.then(function (result) {
 			/* jshint ignore:start */
 			res.status(200)
 			.json({
 				status: 'success',
-				message: `Removed ${result.rowCount} puppy`
+				message: `Removed ${result.rowCount} check-in`
 			});
 		/* jshint ignore:end */
 		})
@@ -91,9 +91,9 @@ function removePuppy(req, res, next) {
 	});
 }
 module.exports = {
-	getAllPuppies: getAllPuppies,
-	getSinglePuppy: getSinglePuppy,
-	createPuppy: createPuppy,
-	updatePuppy: updatePuppy,
-	removePuppy: removePuppy
+	getAllCheckIns: getAllCheckIns,
+	getSingleCheckIn: getSingleCheckIn,
+	checkIn: checkIn,
+	updateCheckIn: updateCheckIn,
+	removeCheckIn: removeCheckIn
 };
