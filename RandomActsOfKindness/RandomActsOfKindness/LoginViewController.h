@@ -11,4 +11,5 @@
 
 @interface LoginViewController : UIViewController <FBSDKLoginButtonDelegate>
 @property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+-(void)getUserInformation;
 @end

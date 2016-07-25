@@ -12,8 +12,9 @@
 @interface User : NSObject
 
 @property NSString *username;
-@property FBSDKAccessToken *token;
 @property UIImage *profilePicture;
+@property NSString *uid;
+@property NSArray *friends;
 + (instancetype)sharedUser;
 
 @end

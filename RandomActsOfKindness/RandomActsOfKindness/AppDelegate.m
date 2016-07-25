@@ -21,9 +21,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    
     //shows login screen if facebook session isn't active
     if(![FBSDKAccessToken currentAccessToken]) {
         [self showLoginScreen:NO];
+    } else {
+        LoginViewController *view = [[LoginViewController alloc] init];
+        [view getUserInformation];
     }
 
     return YES;

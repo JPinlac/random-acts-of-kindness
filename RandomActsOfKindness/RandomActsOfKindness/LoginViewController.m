@@ -34,14 +34,22 @@
 - (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error{
   
     [self getUserInformation];
-    //    [FBSDKAccessToken ]
-    [User sharedUser].token = result.token;
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)getUserInformation{
-    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id, name, picture.width(720).height(720)"}]
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id, name, picture.width(720).height(720), friends"}]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
          if (!error) {
+             User *user = [User sharedUser];
+             NSURL *url = [NSURL URLWithString:[[[result valueForKey:@"picture"] valueForKey:@"data"] valueForKey:@"url"]];
+             NSData *data = [NSData dataWithContentsOfURL:url];
+             UIImage *img = [[UIImage alloc] initWithData:data];
+             user.profilePicture = img;
+             user.uid = [result valueForKey:@"id"];
+             user.username = [result valueForKey:@"name"];
+             
+             NSArray *array = [[NSArray alloc] initWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
+             user.friends = array;
              NSLog(@"fetched user:%@", result);
          }
      }];
