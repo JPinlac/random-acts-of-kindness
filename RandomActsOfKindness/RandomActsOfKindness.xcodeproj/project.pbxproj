@@ -10,11 +10,14 @@
 		33711A1C96CD10577595DB75 /* libPods-RandomActsOfKindness.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A33E23E4A45C417D46B6E674 /* libPods-RandomActsOfKindness.a */; };
 		43054E091D3FE5D20008042C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E081D3FE5D20008042C /* main.m */; };
 		43054E0C1D3FE5D20008042C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E0B1D3FE5D20008042C /* AppDelegate.m */; };
-		43054E0F1D3FE5D20008042C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E0E1D3FE5D20008042C /* ViewController.m */; };
 		43054E121D3FE5D20008042C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43054E101D3FE5D20008042C /* Main.storyboard */; };
 		43054E141D3FE5D20008042C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43054E131D3FE5D20008042C /* Assets.xcassets */; };
 		43054E171D3FE5D20008042C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43054E151D3FE5D20008042C /* LaunchScreen.storyboard */; };
 		43054E221D3FE5D20008042C /* RandomActsOfKindnessTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E211D3FE5D20008042C /* RandomActsOfKindnessTests.m */; };
+		43054E2E1D3FEF810008042C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E2D1D3FEF810008042C /* LoginViewController.m */; };
+		438351231D41450B000694E8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351221D41450B000694E8 /* User.m */; };
+		438351271D415D9C000694E8 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351261D415D9C000694E8 /* ScannerViewController.m */; };
+		4383512A1D4265F4000694E8 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351291D4265F4000694E8 /* UserViewController.m */; };
 		E87528DD4AEE051F1F1C8CF2 /* libPods-RandomActsOfKindnessTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9171A8DF6F23A7A34F8EFCB /* libPods-RandomActsOfKindnessTests.a */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +36,6 @@
 		43054E081D3FE5D20008042C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43054E0A1D3FE5D20008042C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		43054E0B1D3FE5D20008042C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		43054E0D1D3FE5D20008042C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		43054E0E1D3FE5D20008042C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		43054E111D3FE5D20008042C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43054E131D3FE5D20008042C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43054E161D3FE5D20008042C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +43,14 @@
 		43054E1D1D3FE5D20008042C /* RandomActsOfKindnessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomActsOfKindnessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43054E211D3FE5D20008042C /* RandomActsOfKindnessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomActsOfKindnessTests.m; sourceTree = "<group>"; };
 		43054E231D3FE5D20008042C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43054E2C1D3FEF810008042C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		43054E2D1D3FEF810008042C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		438351211D41450B000694E8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		438351221D41450B000694E8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		438351251D415D9C000694E8 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
+		438351261D415D9C000694E8 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
+		438351281D4265F4000694E8 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		438351291D4265F4000694E8 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		593D429E515E9F8F98F4647E /* Pods-RandomActsOfKindness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindness.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindness/Pods-RandomActsOfKindness.release.xcconfig"; sourceTree = "<group>"; };
 		70BB851BC6AB600B639C9937 /* Pods-RandomActsOfKindness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindness.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindness/Pods-RandomActsOfKindness.debug.xcconfig"; sourceTree = "<group>"; };
 		70D437C9A0ABAAAE8C8E654C /* Pods-RandomActsOfKindnessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindnessTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindnessTests/Pods-RandomActsOfKindnessTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,14 +111,13 @@
 		43054E061D3FE5D20008042C /* RandomActsOfKindness */ = {
 			isa = PBXGroup;
 			children = (
+				43054E101D3FE5D20008042C /* Main.storyboard */,
 				43054E0A1D3FE5D20008042C /* AppDelegate.h */,
 				43054E0B1D3FE5D20008042C /* AppDelegate.m */,
-				43054E0D1D3FE5D20008042C /* ViewController.h */,
-				43054E0E1D3FE5D20008042C /* ViewController.m */,
-				43054E101D3FE5D20008042C /* Main.storyboard */,
+				43054E2F1D4116C30008042C /* Controllers */,
+				438351241D414511000694E8 /* Models */,
 				43054E131D3FE5D20008042C /* Assets.xcassets */,
 				43054E151D3FE5D20008042C /* LaunchScreen.storyboard */,
-				43054E181D3FE5D20008042C /* Info.plist */,
 				43054E071D3FE5D20008042C /* Supporting Files */,
 			);
 			path = RandomActsOfKindness;
@@ -118,6 +126,7 @@
 		43054E071D3FE5D20008042C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43054E181D3FE5D20008042C /* Info.plist */,
 				43054E081D3FE5D20008042C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -130,6 +139,28 @@
 				43054E231D3FE5D20008042C /* Info.plist */,
 			);
 			path = RandomActsOfKindnessTests;
+			sourceTree = "<group>";
+		};
+		43054E2F1D4116C30008042C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				43054E2C1D3FEF810008042C /* LoginViewController.h */,
+				43054E2D1D3FEF810008042C /* LoginViewController.m */,
+				438351251D415D9C000694E8 /* ScannerViewController.h */,
+				438351261D415D9C000694E8 /* ScannerViewController.m */,
+				438351281D4265F4000694E8 /* UserViewController.h */,
+				438351291D4265F4000694E8 /* UserViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		438351241D414511000694E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				438351211D41450B000694E8 /* User.h */,
+				438351221D41450B000694E8 /* User.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		BFF978B34F946B63D40EB025 /* Pods */ = {
@@ -342,9 +373,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43054E0F1D3FE5D20008042C /* ViewController.m in Sources */,
+				438351231D41450B000694E8 /* User.m in Sources */,
+				43054E2E1D3FEF810008042C /* LoginViewController.m in Sources */,
 				43054E0C1D3FE5D20008042C /* AppDelegate.m in Sources */,
+				4383512A1D4265F4000694E8 /* UserViewController.m in Sources */,
 				43054E091D3FE5D20008042C /* main.m in Sources */,
+				438351271D415D9C000694E8 /* ScannerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
