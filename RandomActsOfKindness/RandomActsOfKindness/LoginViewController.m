@@ -19,7 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self createFbButton];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Facebook button setup
+
+-(void)createFbButton{
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     loginButton.readPermissions = @[@"public_profile", @"user_friends"];
     loginButton.center = self.view.center;
@@ -27,15 +38,11 @@
     [self.view addSubview:loginButton];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error{
-  
     [self getUserInformation];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 -(void)getUserInformation{
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id, name, picture.width(720).height(720), friends"}]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
@@ -54,9 +61,6 @@
              NSLog(@"fetched user:%@", result);
          }
      }];
-}
-- (IBAction)getInfo:(id)sender {
-    [self getUserInformation];
 }
 
 - (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{

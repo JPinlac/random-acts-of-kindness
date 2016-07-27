@@ -35,7 +35,6 @@
 
 -(void) showLoginScreen:(BOOL)animated
 {
-    
     // Get login screen from storyboard and present it
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *viewController = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];

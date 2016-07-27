@@ -19,6 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self custimizeView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UI customization
+
+-(void)custimizeView{
     _userPicture.image = [User sharedUser].profilePicture;
     _userPicture.layer.cornerRadius = 120;
     _userPicture.layer.borderWidth = 2.0;
@@ -26,17 +37,9 @@
     _userPicture.layer.borderColor=[[UIColor blackColor] CGColor];
     _userPicture.clipsToBounds = YES;
     self.title = [User sharedUser].username;
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (IBAction)goHome:(id)sender {
-    [[self presentingViewController]dismissViewControllerAnimated:YES completion:nil];
-}
-
+#pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -45,7 +48,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [User sharedUser].friends.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
@@ -57,15 +59,16 @@
     return cell;
 }
 
-
-/*
 #pragma mark - Navigation
 
+- (IBAction)goHome:(id)sender {
+    [[self presentingViewController]dismissViewControllerAnimated:YES completion:nil];
+}
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AddActViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
 
 @end
