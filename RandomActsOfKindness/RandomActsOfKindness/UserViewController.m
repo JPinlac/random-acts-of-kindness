@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _userPicture.image = [User sharedUser].profilePicture;
-    _userPicture.layer.cornerRadius = 20;
+    _userPicture.layer.cornerRadius = 120;
     _userPicture.layer.borderWidth = 2.0;
     _userPicture.layer.backgroundColor=[[UIColor clearColor] CGColor];
     _userPicture.layer.borderColor=[[UIColor blackColor] CGColor];
@@ -33,6 +33,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)goHome:(id)sender {
+    [[self presentingViewController]dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -44,10 +48,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"establishmentCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
     User *user = [User sharedUser];
-    for(id friend in user.friends)
-        cell.textLabel.text = [friend name];
+    for(id friend in user.friends){
+        NSLog(@"%@", friend);
+        cell.textLabel.text = [friend valueForKey:@"name"];
+    }
     return cell;
 }
 

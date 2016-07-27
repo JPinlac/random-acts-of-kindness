@@ -9,16 +9,19 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.14.0):
     - FBSDKCoreKit
+  - MTBBarcodeScanner (2.0.3)
 
 DEPENDENCIES:
   - FBSDKCoreKit (~> 4.14)
   - FBSDKLoginKit (~> 4.14)
+  - MTBBarcodeScanner (~> 2.0)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
   FBSDKLoginKit: da563567a108050ef83739c8c8c001ee9e25fa13
+  MTBBarcodeScanner: a05f36125ff8ea48011b84715c5faa10838ddb80
 
-PODFILE CHECKSUM: da84a4d10ef1998575cbe1122fd790d5fe7b0b90
+PODFILE CHECKSUM: cf3718cb219c0b50d0780887da40345049856add
 
 COCOAPODS: 1.0.1
