@@ -12,15 +12,14 @@
 
 
 @interface LoginViewController ()
-
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     [self createFbButton];
+    
 }
 
 - (void)didReceiveMemoryWarning {

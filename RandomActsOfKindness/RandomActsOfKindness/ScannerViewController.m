@@ -9,9 +9,11 @@
 #import "ScannerViewController.h"
 #import "MTBBarcodeScanner.h"
 #import "AddActViewController.h"
+#import "User.h"
 
 @interface ScannerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *scannerView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileButton;
 @property (weak, nonatomic) NSString *cardNumber;
 @end
 
@@ -20,7 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self customizeView];
+    [self profileButtonSetup];
     [self startScanner];
 }
 
@@ -28,6 +31,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewDidAppear{
+    [self customizeView];
+}
+
+#pragma mark - UI customization
+
+-(void)customizeView{
+    
+    //Customize profile button
+    _profileButton.layer.cornerRadius = 30;
+    _profileButton.layer.borderWidth = 1.0;
+    _profileButton.layer.backgroundColor=[[UIColor clearColor] CGColor];
+    _profileButton.layer.borderColor=[[UIColor blackColor] CGColor];
+    _profileButton.clipsToBounds = YES;
+    [self performSelector:@selector(assignPicture) withObject:nil afterDelay:0.4];
+}
+
+-(void)assignPicture{
+    _profileButton.image = [User sharedUser].profilePicture;
+}
+-(void)profileButtonSetup{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped:)];
+    [_profileButton addGestureRecognizer:tap];
+}
+
+-(void)profileTapped:(UIGestureRecognizer *)tap{
+    [self performSegueWithIdentifier:@"profileSegue" sender:self];
+}
+
 #pragma mark = Barcode scanner
 
 -(void)startScanner{

@@ -11,15 +11,17 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface UserViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userPicture;
+@property (weak, nonatomic) User *user;
 @end
+
 
 @implementation UserViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self custimizeView];
+    [self customizeView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,14 +31,17 @@
 
 #pragma mark - UI customization
 
--(void)custimizeView{
-    _userPicture.image = [User sharedUser].profilePicture;
-    _userPicture.layer.cornerRadius = 120;
-    _userPicture.layer.borderWidth = 2.0;
-    _userPicture.layer.backgroundColor=[[UIColor clearColor] CGColor];
-    _userPicture.layer.borderColor=[[UIColor blackColor] CGColor];
-    _userPicture.clipsToBounds = YES;
-    self.title = [User sharedUser].username;
+-(void)customizeView{
+    _user = [User sharedUser];
+    _userPicture.image = _user.profilePicture;
+//    _userPicture.layer.cornerRadius = 120;
+//    _userPicture.layer.borderWidth = 2.0;
+//    _userPicture.layer.backgroundColor=[[UIColor clearColor] CGColor];
+//    _userPicture.layer.borderColor=[[UIColor blackColor] CGColor];
+//    _userPicture.clipsToBounds = YES;
+//    self.title = [User sharedUser].username;
+    self.title = @"Profile";
+    _nameLabel.text = _user.username;
 }
 
 #pragma mark - Table view
@@ -46,14 +51,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [User sharedUser].friends.count;
+    return _user.friends.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
-    User *user = [User sharedUser];
-    for(id friend in user.friends){
-        NSLog(@"%@", friend);
+    for(id friend in _user.friends){
         cell.textLabel.text = [friend valueForKey:@"name"];
     }
     return cell;
