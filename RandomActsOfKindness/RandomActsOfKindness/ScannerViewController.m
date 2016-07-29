@@ -10,6 +10,7 @@
 #import "MTBBarcodeScanner.h"
 #import "AddActViewController.h"
 #import "User.h"
+#import "CAGradientLayer+_colors.h"
 
 @interface ScannerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *scannerView;
@@ -47,6 +48,11 @@
     _profileButton.layer.borderColor=[[UIColor blackColor] CGColor];
     _profileButton.clipsToBounds = YES;
     [self performSelector:@selector(assignPicture) withObject:nil afterDelay:0.4];
+    
+    //add gradient background
+    CAGradientLayer *backgroundLayer = [CAGradientLayer sunshine];
+    backgroundLayer.frame = self.view.frame;
+    [self.view.layer insertSublayer:backgroundLayer atIndex:0];
 }
 
 -(void)assignPicture{

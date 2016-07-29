@@ -19,6 +19,7 @@
 		438351271D415D9C000694E8 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351261D415D9C000694E8 /* ScannerViewController.m */; };
 		4383512A1D4265F4000694E8 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351291D4265F4000694E8 /* UserViewController.m */; };
 		4383512D1D47AFC8000694E8 /* AddActViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4383512C1D47AFC8000694E8 /* AddActViewController.m */; };
+		43B16E8B1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B16E8A1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m */; };
 		E87528DD4AEE051F1F1C8CF2 /* libPods-RandomActsOfKindnessTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9171A8DF6F23A7A34F8EFCB /* libPods-RandomActsOfKindnessTests.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		438351291D4265F4000694E8 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		4383512B1D47AFC8000694E8 /* AddActViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddActViewController.h; sourceTree = "<group>"; };
 		4383512C1D47AFC8000694E8 /* AddActViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddActViewController.m; sourceTree = "<group>"; };
+		43B16E891D4A77D1003BE0B0 /* CAGradientLayer+_colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAGradientLayer+_colors.h"; sourceTree = "<group>"; };
+		43B16E8A1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAGradientLayer+_colors.m"; sourceTree = "<group>"; };
 		593D429E515E9F8F98F4647E /* Pods-RandomActsOfKindness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindness.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindness/Pods-RandomActsOfKindness.release.xcconfig"; sourceTree = "<group>"; };
 		70BB851BC6AB600B639C9937 /* Pods-RandomActsOfKindness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindness.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindness/Pods-RandomActsOfKindness.debug.xcconfig"; sourceTree = "<group>"; };
 		70D437C9A0ABAAAE8C8E654C /* Pods-RandomActsOfKindnessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindnessTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindnessTests/Pods-RandomActsOfKindnessTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 				43054E101D3FE5D20008042C /* Main.storyboard */,
 				43054E0A1D3FE5D20008042C /* AppDelegate.h */,
 				43054E0B1D3FE5D20008042C /* AppDelegate.m */,
+				43B16E881D4A7772003BE0B0 /* Categories */,
 				43054E2F1D4116C30008042C /* Controllers */,
 				438351241D414511000694E8 /* Models */,
 				43054E131D3FE5D20008042C /* Assets.xcassets */,
@@ -166,6 +170,15 @@
 				438351221D41450B000694E8 /* User.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		43B16E881D4A7772003BE0B0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				43B16E891D4A77D1003BE0B0 /* CAGradientLayer+_colors.h */,
+				43B16E8A1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		BFF978B34F946B63D40EB025 /* Pods */ = {
@@ -386,6 +399,7 @@
 				4383512D1D47AFC8000694E8 /* AddActViewController.m in Sources */,
 				43054E091D3FE5D20008042C /* main.m in Sources */,
 				438351271D415D9C000694E8 /* ScannerViewController.m in Sources */,
+				43B16E8B1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
