@@ -67,8 +67,12 @@
 -(void)createFbButton{
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     loginButton.readPermissions = @[@"public_profile", @"user_friends"];
-    loginButton.center = self.view.center;
+//    loginButton.center = self.view.center;
     loginButton.delegate = self;
+    CGRect btFrame = loginButton.frame;
+    btFrame.origin.x = (self.view.frame.size.width - loginButton.frame.size.width)/2;
+    btFrame.origin.y = (self.view.frame.size.height/2) * 1.5;
+    loginButton.frame = btFrame;
     [self.view addSubview:loginButton];
 }
 

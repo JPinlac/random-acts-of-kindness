@@ -19,8 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="VNX-jI-KNV">
-                                <rect key="frame" x="27" y="173" width="267" height="163"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="VNX-jI-KNV">
+                                <rect key="frame" x="27" y="202" width="267" height="163"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VNX-jI-KNV" secondAttribute="height" multiplier="267:163" id="Ga8-5O-K9z"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Random">
                                         <attributes>
@@ -83,6 +86,11 @@ Cg
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VNX-jI-KNV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="7" id="At3-gt-7EW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VNX-jI-KNV" secondAttribute="trailing" constant="6" id="wkz-kn-FSS"/>
+                            <constraint firstItem="VNX-jI-KNV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="y3h-pa-2ov"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dyd-iM-6hv"/>
                 </viewController>
