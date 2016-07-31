@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "LoginViewController.h"
+#import <RestKit/RestKit.h>
 @interface AppDelegate ()
 
 @end
@@ -19,6 +20,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
@@ -29,7 +31,7 @@
         LoginViewController *view = [[LoginViewController alloc] init];
         [view getUserInformation];
     }
-
+    
     return YES;
 }
 

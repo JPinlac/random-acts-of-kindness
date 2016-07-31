@@ -11,6 +11,9 @@
 #import "AddActViewController.h"
 #import "User.h"
 #import "CAGradientLayer+_colors.h"
+#import "NetworkCalls.h"
+#import "CheckIn.h"
+
 
 @interface ScannerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *scannerView;
@@ -40,6 +43,10 @@
 #pragma mark - UI customization
 
 -(void)customizeView{
+    //add gradient background
+    CAGradientLayer *backgroundLayer = [CAGradientLayer sunshine];
+    backgroundLayer.frame = self.view.frame;
+    [self.view.layer insertSublayer:backgroundLayer atIndex:0];
     
     //Customize profile button
     _profileButton.layer.cornerRadius = 30;
@@ -47,12 +54,10 @@
     _profileButton.layer.backgroundColor=[[UIColor clearColor] CGColor];
     _profileButton.layer.borderColor=[[UIColor blackColor] CGColor];
     _profileButton.clipsToBounds = YES;
-    [self performSelector:@selector(assignPicture) withObject:nil afterDelay:0.4];
-    
-    //add gradient background
-    CAGradientLayer *backgroundLayer = [CAGradientLayer sunshine];
-    backgroundLayer.frame = self.view.frame;
-    [self.view.layer insertSublayer:backgroundLayer atIndex:0];
+    for(float x = 0; x<2; x = x +.1){
+        [self performSelector:@selector(assignPicture) withObject:nil afterDelay:x];
+        NSLog(@"HI");
+    }
 }
 
 -(void)assignPicture{
@@ -116,5 +121,8 @@
     [alert addAction:ok];
     [self presentViewController:alert animated:YES completion:nil];
     
+}
+- (IBAction)getCheckIns:(id)sender {
+    [NetworkCalls getCheckIns];
 }
 @end
