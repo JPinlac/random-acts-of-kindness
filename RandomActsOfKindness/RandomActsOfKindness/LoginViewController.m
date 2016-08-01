@@ -10,11 +10,14 @@
 #import "User.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "CAGradientLayer+_colors.h"
+#import "ScannerViewController.h"
 
 @interface LoginViewController ()
 @end
 
 @implementation LoginViewController
+
+bool loggedIn = false;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,6 +60,9 @@
         self.view.backgroundColor = [colors objectAtIndex:i];
     } completion:^(BOOL finished) {
         ++i;
+        if(loggedIn){
+            return;
+        }
         [self doBackgroundColorAnimation];
     }];
     
@@ -67,8 +73,11 @@
 -(void)createFbButton{
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     loginButton.readPermissions = @[@"public_profile", @"user_friends"];
-    loginButton.center = self.view.center;
     loginButton.delegate = self;
+    CGRect btFrame = loginButton.frame;
+    btFrame.origin.x = (self.view.frame.size.width - loginButton.frame.size.width)/2;
+    btFrame.origin.y = (self.view.frame.size.height/2) * 1.5;
+    loginButton.frame = btFrame;
     [self.view addSubview:loginButton];
 }
 
@@ -91,8 +100,8 @@
              
              NSArray *array = [[NSArray alloc] initWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
              user.friends = array;
-             NSLog(@"%@", [User sharedUser].friends);
-             NSLog(@"fetched user:%@", result);
+//             NSLog(@"%@", [User sharedUser].friends);
+//             NSLog(@"fetched user:%@", result);
          }
      }];
 }

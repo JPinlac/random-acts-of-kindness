@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33711A1C96CD10577595DB75 /* libPods-RandomActsOfKindness.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A33E23E4A45C417D46B6E674 /* libPods-RandomActsOfKindness.a */; };
+		1814533A5E51BD2003933A98 /* libPods-RandomActsOfKindness.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F214A5E5CB5AF13663C30437 /* libPods-RandomActsOfKindness.a */; };
 		43054E091D3FE5D20008042C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E081D3FE5D20008042C /* main.m */; };
 		43054E0C1D3FE5D20008042C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E0B1D3FE5D20008042C /* AppDelegate.m */; };
 		43054E121D3FE5D20008042C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43054E101D3FE5D20008042C /* Main.storyboard */; };
@@ -20,7 +20,9 @@
 		4383512A1D4265F4000694E8 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351291D4265F4000694E8 /* UserViewController.m */; };
 		4383512D1D47AFC8000694E8 /* AddActViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4383512C1D47AFC8000694E8 /* AddActViewController.m */; };
 		43B16E8B1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B16E8A1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m */; };
-		E87528DD4AEE051F1F1C8CF2 /* libPods-RandomActsOfKindnessTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9171A8DF6F23A7A34F8EFCB /* libPods-RandomActsOfKindnessTests.a */; };
+		43FB64891D4D3BBB00C50B62 /* NetworkCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FB64881D4D3BBB00C50B62 /* NetworkCalls.m */; };
+		43FB648D1D4D458100C50B62 /* CheckIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FB648C1D4D458100C50B62 /* CheckIn.m */; };
+		8A9552CE7207D77D665801C7 /* libPods-RandomActsOfKindnessTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4379A441D2C60981D6305A /* libPods-RandomActsOfKindnessTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D4379A441D2C60981D6305A /* libPods-RandomActsOfKindnessTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomActsOfKindnessTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43054E041D3FE5D20008042C /* RandomActsOfKindness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomActsOfKindness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43054E081D3FE5D20008042C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43054E0A1D3FE5D20008042C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -57,12 +60,15 @@
 		4383512C1D47AFC8000694E8 /* AddActViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddActViewController.m; sourceTree = "<group>"; };
 		43B16E891D4A77D1003BE0B0 /* CAGradientLayer+_colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAGradientLayer+_colors.h"; sourceTree = "<group>"; };
 		43B16E8A1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAGradientLayer+_colors.m"; sourceTree = "<group>"; };
+		43FB64871D4D3BBB00C50B62 /* NetworkCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkCalls.h; path = ../NetworkCalls.h; sourceTree = "<group>"; };
+		43FB64881D4D3BBB00C50B62 /* NetworkCalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkCalls.m; path = ../NetworkCalls.m; sourceTree = "<group>"; };
+		43FB648B1D4D458100C50B62 /* CheckIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIn.h; sourceTree = "<group>"; };
+		43FB648C1D4D458100C50B62 /* CheckIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIn.m; sourceTree = "<group>"; };
 		593D429E515E9F8F98F4647E /* Pods-RandomActsOfKindness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindness.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindness/Pods-RandomActsOfKindness.release.xcconfig"; sourceTree = "<group>"; };
 		70BB851BC6AB600B639C9937 /* Pods-RandomActsOfKindness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindness.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindness/Pods-RandomActsOfKindness.debug.xcconfig"; sourceTree = "<group>"; };
 		70D437C9A0ABAAAE8C8E654C /* Pods-RandomActsOfKindnessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindnessTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindnessTests/Pods-RandomActsOfKindnessTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A33E23E4A45C417D46B6E674 /* libPods-RandomActsOfKindness.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomActsOfKindness.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FD999C921136EFE1B6CF05 /* Pods-RandomActsOfKindnessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomActsOfKindnessTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomActsOfKindnessTests/Pods-RandomActsOfKindnessTests.release.xcconfig"; sourceTree = "<group>"; };
-		C9171A8DF6F23A7A34F8EFCB /* libPods-RandomActsOfKindnessTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomActsOfKindnessTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F214A5E5CB5AF13663C30437 /* libPods-RandomActsOfKindness.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomActsOfKindness.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33711A1C96CD10577595DB75 /* libPods-RandomActsOfKindness.a in Frameworks */,
+				1814533A5E51BD2003933A98 /* libPods-RandomActsOfKindness.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E87528DD4AEE051F1F1C8CF2 /* libPods-RandomActsOfKindnessTests.a in Frameworks */,
+				8A9552CE7207D77D665801C7 /* libPods-RandomActsOfKindnessTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,8 +94,8 @@
 		04F6F6FB9383C1D8166D5214 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A33E23E4A45C417D46B6E674 /* libPods-RandomActsOfKindness.a */,
-				C9171A8DF6F23A7A34F8EFCB /* libPods-RandomActsOfKindnessTests.a */,
+				F214A5E5CB5AF13663C30437 /* libPods-RandomActsOfKindness.a */,
+				0D4379A441D2C60981D6305A /* libPods-RandomActsOfKindnessTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +128,7 @@
 				43054E0B1D3FE5D20008042C /* AppDelegate.m */,
 				43B16E881D4A7772003BE0B0 /* Categories */,
 				43054E2F1D4116C30008042C /* Controllers */,
+				43FB648A1D4D3BCE00C50B62 /* Helpers */,
 				438351241D414511000694E8 /* Models */,
 				43054E131D3FE5D20008042C /* Assets.xcassets */,
 				43054E151D3FE5D20008042C /* LaunchScreen.storyboard */,
@@ -166,6 +173,8 @@
 		438351241D414511000694E8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				43FB648B1D4D458100C50B62 /* CheckIn.h */,
+				43FB648C1D4D458100C50B62 /* CheckIn.m */,
 				438351211D41450B000694E8 /* User.h */,
 				438351221D41450B000694E8 /* User.m */,
 			);
@@ -179,6 +188,15 @@
 				43B16E8A1D4A77D1003BE0B0 /* CAGradientLayer+_colors.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		43FB648A1D4D3BCE00C50B62 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				43FB64871D4D3BBB00C50B62 /* NetworkCalls.h */,
+				43FB64881D4D3BBB00C50B62 /* NetworkCalls.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		BFF978B34F946B63D40EB025 /* Pods */ = {
@@ -393,6 +411,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				438351231D41450B000694E8 /* User.m in Sources */,
+				43FB648D1D4D458100C50B62 /* CheckIn.m in Sources */,
+				43FB64891D4D3BBB00C50B62 /* NetworkCalls.m in Sources */,
 				43054E2E1D3FEF810008042C /* LoginViewController.m in Sources */,
 				43054E0C1D3FE5D20008042C /* AppDelegate.m in Sources */,
 				4383512A1D4265F4000694E8 /* UserViewController.m in Sources */,

@@ -9,6 +9,7 @@ target 'RandomActsOfKindness' do
 	pod 'FBSDKCoreKit', '~> 4.14'
 	pod 'FBSDKLoginKit', '~> 4.14'
 	pod 'MTBBarcodeScanner', '~> 2.0'
+	pod 'AFNetworking', '~> 3.1'
   target 'RandomActsOfKindnessTests' do
     inherit! :search_paths
     # Pods for testing
