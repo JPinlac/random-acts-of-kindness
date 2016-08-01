@@ -7,6 +7,7 @@
 //
 
 #import "AddActViewController.h"
+#import "CAGradientLayer+_colors.h"
 
 @interface AddActViewController ()
 
@@ -22,6 +23,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)customizeView{
+    //add gradient background
+    CAGradientLayer *backgroundLayer = [CAGradientLayer random];
+    backgroundLayer.frame = self.view.frame;
+    [self.view.layer insertSublayer:backgroundLayer atIndex:0];
+    
 }
 
 /*

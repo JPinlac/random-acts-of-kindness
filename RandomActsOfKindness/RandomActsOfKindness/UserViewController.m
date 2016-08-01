@@ -9,6 +9,7 @@
 #import "UserViewController.h"
 #import "User.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CAGradientLayer+_colors.h"
 
 @interface UserViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -42,6 +43,10 @@
 //    self.title = [User sharedUser].username;
     self.title = @"Profile";
     _nameLabel.text = _user.username;
+    
+    CAGradientLayer *backgroundLayer = [CAGradientLayer random];
+    backgroundLayer.frame = self.view.frame;
+    [self.view.layer insertSublayer:backgroundLayer atIndex:0];
 }
 
 #pragma mark - Table view
