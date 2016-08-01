@@ -10,6 +10,7 @@
 #import "User.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "CAGradientLayer+_colors.h"
+#import "ScannerViewController.h"
 
 @interface LoginViewController ()
 @end
@@ -99,8 +100,8 @@ bool loggedIn = false;
              
              NSArray *array = [[NSArray alloc] initWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
              user.friends = array;
-             NSLog(@"%@", [User sharedUser].friends);
-             NSLog(@"fetched user:%@", result);
+//             NSLog(@"%@", [User sharedUser].friends);
+//             NSLog(@"fetched user:%@", result);
          }
      }];
 }

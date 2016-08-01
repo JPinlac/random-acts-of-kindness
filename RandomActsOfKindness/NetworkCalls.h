@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NetworkCalls : NSObject
-+(void)getCheckIns;
++(NSMutableDictionary *)getAllCheckIns;
 @end

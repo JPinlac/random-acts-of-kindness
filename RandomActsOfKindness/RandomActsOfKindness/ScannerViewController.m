@@ -13,12 +13,13 @@
 #import "CAGradientLayer+_colors.h"
 #import "NetworkCalls.h"
 #import "CheckIn.h"
-
+#import <AFNetworking/AFNetworking.h>
 
 @interface ScannerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *scannerView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileButton;
 @property (weak, nonatomic) NSString *cardNumber;
+@property (strong, nonatomic) NSArray *checkIns;
 @end
 
 @implementation ScannerViewController
@@ -29,6 +30,7 @@
     [self customizeView];
     [self profileButtonSetup];
     [self startScanner];
+    [self displayCheckIns];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,11 +60,13 @@
         [self performSelector:@selector(assignPicture) withObject:nil afterDelay:x];
         NSLog(@"HI");
     }
+    //implement delegate for this load
 }
 
 -(void)assignPicture{
     _profileButton.image = [User sharedUser].profilePicture;
 }
+
 -(void)profileButtonSetup{
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped:)];
     [_profileButton addGestureRecognizer:tap];
@@ -122,7 +126,50 @@
     [self presentViewController:alert animated:YES completion:nil];
     
 }
-- (IBAction)getCheckIns:(id)sender {
-    [NetworkCalls getCheckIns];
+
+#pragma mark - Network calls
+
+//Grabs all check ins to display in map
+-(void)displayCheckIns{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:@"http://api.pinlac.net/checkins"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"%@ %@", response, responseObject);
+            
+            //maps response to CheckIn model
+            
+            //number and dateformatter to convert strings to nsnumber and nsdate
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//            [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+//            [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSz"];
+            
+            for(id checkIn in [responseObject objectForKey:@"data"]){
+                CheckIn *newCheckIn = [[CheckIn alloc] init];
+                newCheckIn.id = [[NSString stringWithFormat:@"%@", [checkIn objectForKey:@"id"]] integerValue];
+                newCheckIn.userId = [[NSString stringWithFormat:@"%@", [checkIn objectForKey:@"userid"]] integerValue];
+                newCheckIn.descriptionProperty = [NSString stringWithFormat:@"%@", [checkIn objectForKey:@"descriptionproperty"]];
+                NSString *latitudeString = [NSString stringWithFormat:@"%@",[[checkIn objectForKey:@"location"] objectAtIndex:0]];
+                NSString *longitudeString = [NSString stringWithFormat:@"%@",[[checkIn objectForKey:@"location"] objectAtIndex:1]];
+                newCheckIn.location =[[NSArray alloc] initWithObjects:
+                                      [f numberFromString:latitudeString],
+                                      [f numberFromString:longitudeString],
+                                      nil];
+                NSString *dateString =[NSString stringWithFormat:@"%@",[checkIn objectForKey:@"time"]];
+                newCheckIn.time = [dateFormatter dateFromString:dateString];
+            }
+        }
+    }];
+    [dataTask resume];
 }
+
 @end
