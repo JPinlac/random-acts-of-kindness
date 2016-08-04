@@ -15,6 +15,8 @@
 		43054E171D3FE5D20008042C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43054E151D3FE5D20008042C /* LaunchScreen.storyboard */; };
 		43054E221D3FE5D20008042C /* RandomActsOfKindnessTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E211D3FE5D20008042C /* RandomActsOfKindnessTests.m */; };
 		43054E2E1D3FEF810008042C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43054E2D1D3FEF810008042C /* LoginViewController.m */; };
+		430DF1A91D4FAC3B00D21FF1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430DF1A81D4FAC3B00D21FF1 /* HomeViewController.m */; };
+		430DF1AB1D4FBB0E00D21FF1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430DF1AA1D4FBB0E00D21FF1 /* MapKit.framework */; };
 		438351231D41450B000694E8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351221D41450B000694E8 /* User.m */; };
 		438351271D415D9C000694E8 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351261D415D9C000694E8 /* ScannerViewController.m */; };
 		4383512A1D4265F4000694E8 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438351291D4265F4000694E8 /* UserViewController.m */; };
@@ -50,6 +52,9 @@
 		43054E231D3FE5D20008042C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43054E2C1D3FEF810008042C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		43054E2D1D3FEF810008042C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		430DF1A71D4FAC3B00D21FF1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		430DF1A81D4FAC3B00D21FF1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		430DF1AA1D4FBB0E00D21FF1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		438351211D41450B000694E8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		438351221D41450B000694E8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		438351251D415D9C000694E8 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
@@ -76,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430DF1AB1D4FBB0E00D21FF1 /* MapKit.framework in Frameworks */,
 				1814533A5E51BD2003933A98 /* libPods-RandomActsOfKindness.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +100,7 @@
 		04F6F6FB9383C1D8166D5214 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				430DF1AA1D4FBB0E00D21FF1 /* MapKit.framework */,
 				F214A5E5CB5AF13663C30437 /* libPods-RandomActsOfKindness.a */,
 				0D4379A441D2C60981D6305A /* libPods-RandomActsOfKindnessTests.a */,
 			);
@@ -160,6 +167,8 @@
 			children = (
 				4383512B1D47AFC8000694E8 /* AddActViewController.h */,
 				4383512C1D47AFC8000694E8 /* AddActViewController.m */,
+				430DF1A71D4FAC3B00D21FF1 /* HomeViewController.h */,
+				430DF1A81D4FAC3B00D21FF1 /* HomeViewController.m */,
 				43054E2C1D3FEF810008042C /* LoginViewController.h */,
 				43054E2D1D3FEF810008042C /* LoginViewController.m */,
 				438351251D415D9C000694E8 /* ScannerViewController.h */,
@@ -416,6 +425,7 @@
 				43054E2E1D3FEF810008042C /* LoginViewController.m in Sources */,
 				43054E0C1D3FE5D20008042C /* AppDelegate.m in Sources */,
 				4383512A1D4265F4000694E8 /* UserViewController.m in Sources */,
+				430DF1A91D4FAC3B00D21FF1 /* HomeViewController.m in Sources */,
 				4383512D1D47AFC8000694E8 /* AddActViewController.m in Sources */,
 				43054E091D3FE5D20008042C /* main.m in Sources */,
 				438351271D415D9C000694E8 /* ScannerViewController.m in Sources */,

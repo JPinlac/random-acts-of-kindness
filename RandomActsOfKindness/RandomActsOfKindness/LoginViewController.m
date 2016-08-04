@@ -100,12 +100,13 @@ bool loggedIn = false;
              
              NSArray *array = [[NSArray alloc] initWithArray:[[result valueForKey:@"friends"] valueForKey:@"data"]];
              user.friends = array;
-//             NSLog(@"%@", [User sharedUser].friends);
-//             NSLog(@"fetched user:%@", result);
+             [self logUser];
          }
      }];
 }
-
+-(void)logUser{
+    
+}
 - (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
     NSLog(@"bye");
 }
