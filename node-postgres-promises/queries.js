@@ -31,6 +31,7 @@ function getSingleCheckIn(req, res, next) {
 		.then(function (data) {
 			res.status(200)
 			.json({
+				request: req.body,
 				status: 'success',
 				data: data,
 				message: 'Retrieved ONE check-in'
@@ -42,7 +43,9 @@ function getSingleCheckIn(req, res, next) {
 }
 
 function checkIn(req, res, next) {
-	req.body.age = parseInt(req.body.age);
+	req.body.location[0] = parseFloat(req.body.location[0]);
+	req.body.location[1] = parseFloat(req.body.location[1]);
+	console.log(req.body.location);
 	db.none('insert into checkIn(location, userId, descriptionProperty)' +
 			'values(${location}, ${userId}, ${descriptionProperty})',
 			req.body)
@@ -57,7 +60,9 @@ function checkIn(req, res, next) {
 		return next(err);
 	});
 }
-
+function addUser(req, res, next) {
+		req.bo
+}
 function updateCheckIn(req, res, next) {
 	db.none('update checkIn set location=$1, userId=$2, descriptionProperty=$3 where id=$4',
 			[req.body.location, req.body.userId,

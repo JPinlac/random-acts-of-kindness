@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/checkIns', db.getAllCheckIns);
 router.get('/checkIns/:id', db.getSingleCheckIn);
-router.post('/checkIns', db.checkIn);
+router.post('/checkIn', db.checkIn);
 router.put('/checkIns/:id', db.updateCheckIn);
 router.delete('/checkIns/:id', db.removeCheckIn);
 
