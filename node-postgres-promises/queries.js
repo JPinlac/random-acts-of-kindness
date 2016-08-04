@@ -45,9 +45,8 @@ function getSingleCheckIn(req, res, next) {
 function checkIn(req, res, next) {
 	req.body.location[0] = parseFloat(req.body.location[0]);
 	req.body.location[1] = parseFloat(req.body.location[1]);
-	console.log(req.body.location);
-	db.none('insert into checkIn(location, userId, descriptionProperty)' +
-			'values(${location}, ${userId}, ${descriptionProperty})',
+	db.none('insert into checkIn(location, userId, descriptionProperty, card)' +
+			'values(${location}, ${userId}, ${descriptionProperty}, ${card})',
 			req.body)
 		.then(function () {
 			res.status(200)

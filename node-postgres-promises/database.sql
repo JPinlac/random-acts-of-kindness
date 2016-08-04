@@ -4,33 +4,26 @@ CREATE DATABASE rak;
 
 ALTER DATABASE rak SET timezone TO 'America/New_york';
 
-CREATE TABLE cards (
-	ID 			SERIAL PRIMARY KEY,
-	checkIns	INTEGER[]
-);
-
 CREATE TABLE checkIn (
 	ID 			SERIAL PRIMARY KEY,
 	time		TIMESTAMP WITH TIME ZONE default current_timestamp,
 	location	DOUBLE PRECISION[],
-	userId		INTEGER,
-	descriptionProperty TEXT
+	userId		TEXT,
+	descriptionProperty TEXT,
+	card		INTEGER
 );
 
 CREATE TABLE users (
 	ID 			SERIAL PRIMARY KEY,
 	fbUserId	TEXT,
-	checkIns	INTEGER[]
+	username	TEXT
 );
 
-INSERT INTO cards (checkIns)
-	VALUES ('{1,2,3,4,5,6,7,8,9,10}');
+INSERT INTO checkIn (location, userId, descriptionProperty, card)
+ 	VALUES ('{42.365150, -83.071439}', 42, 'IT WORKS', 1);
 
-INSERT INTO checkIn (location, userId, descriptionProperty)
- 	VALUES ('{42.365150, -83.071439}', 1, 'IT WORKS');
+INSERT INTO checkIn (location, userId, descriptionProperty, card)
+	VALUES ('{42.365213, -83.072989}', 42, 'AGAIN', 1);
 
-INSERT INTO checkIn (location, userId, descriptionProperty)
-	VALUES ('{42.365213, -83.072989}', 1, 'AGAIN');
-
-INSERT INTO users (fbUserId)
- 	VALUES (1231);
+INSERT INTO users (fbUserId,username)
+ 	VALUES (42, 'Patrick Star');
