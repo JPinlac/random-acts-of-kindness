@@ -16,7 +16,7 @@
 
 @interface ScannerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *scannerView;
-@property (weak, nonatomic) NSString *cardNumber;
+@property (strong, nonatomic) NSNumber *cardNumber;
 @end
 
 @implementation ScannerViewController
@@ -57,7 +57,9 @@
             [scanner startScanningWithResultBlock:^(NSArray *codes) {
                 AVMetadataMachineReadableCodeObject *code = [codes firstObject];
                 NSLog(@"Found code: %@", code.stringValue);
-                _cardNumber = code.stringValue;
+                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                f.numberStyle = NSNumberFormatterDecimalStyle;
+                _cardNumber = [f numberFromString: code.stringValue];
                 [scanner stopScanning];
                 [self performSegueWithIdentifier:@"scanSegue" sender:self];
             }];
@@ -72,10 +74,10 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if([segue.identifier isEqualToString:@"scanSegue"]){
         AddActViewController *vc = [segue destinationViewController];
-        vc.cardNumberLabel.text = [NSString stringWithFormat:@"Card number: %@", vc.cardNumberLabel];
+        vc.cardNumber = _cardNumber;
+        vc.coord = _coord;
     }
 }
 
@@ -96,6 +98,7 @@
                            handler:^(UIAlertAction * action)
      {
          [alert dismissViewControllerAnimated:YES completion:nil];
+         _cardNumber = @2;
          [self performSegueWithIdentifier:@"scanSegue" sender:self];
      }];
     [alert addAction:ok];

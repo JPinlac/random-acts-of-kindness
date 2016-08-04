@@ -9,16 +9,15 @@
 #import "HomeViewController.h"
 #import "User.h"
 #import "CAGradientLayer+_colors.h"
-#import "NetworkCalls.h"
 #import "CheckIn.h"
 #import <AFNetworking/AFNetworking.h>
-#import <MapKit/MapKit.h>
+#import "ScannerViewController.h"
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileButton;
 @property (strong, nonatomic) NSMutableArray *checkIns;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @end
 
 @implementation HomeViewController
@@ -27,7 +26,8 @@
     [super viewDidLoad];
     [self customizeView];
     [self profileButtonSetup];
-    [self displayCheckIns];
+    [self startLocationManager];
+    [self getCheckIns];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +55,6 @@
     _profileButton.clipsToBounds = YES;
     for(float x = 0; x<2; x = x +.1){
         [self performSelector:@selector(assignPicture) withObject:nil afterDelay:x];
-        NSLog(@"HI");
     }
     //implement delegate for this load
 }
@@ -77,7 +76,11 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if([segue.identifier isEqualToString:@"scannerSegue"]){
+        UINavigationController *nc = [segue destinationViewController];
+        ScannerViewController *vc = (ScannerViewController *)nc.topViewController;
+        vc.coord = CLLocationCoordinate2DMake(_locationManager.location.coordinate.latitude, _locationManager.location.coordinate.longitude);
+    }
 }
 
 #pragma mark - Helpers
@@ -96,15 +99,13 @@
      }];
     [alert addAction:ok];
     [self presentViewController:alert animated:YES completion:nil];
-    
 }
 
-#pragma mark - Network calls
+#pragma mark - CheckIns
 
-//Grabs all check ins to display in map
--(void)displayCheckIns{
+//Makes network call to retrieve check ins
+-(void)getCheckIns{
     _checkIns = [[NSMutableArray alloc] init];
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -115,37 +116,105 @@
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
-            NSLog(@"%@ %@", response, responseObject);
-            
-            //maps response to CheckIn model
-            
-            //number and dateformatter to convert strings to nsnumber and nsdate
-            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-            f.numberStyle = NSNumberFormatterDecimalStyle;
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            //            [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
-            //            [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSz"];
-            
-            for(id checkIn in [responseObject objectForKey:@"data"]){
-                CheckIn *newCheckIn = [[CheckIn alloc] init];
-                newCheckIn.id = [[NSString stringWithFormat:@"%@", [checkIn objectForKey:@"id"]] integerValue];
-                newCheckIn.userId = [[NSString stringWithFormat:@"%@", [checkIn objectForKey:@"userid"]] integerValue];
-                newCheckIn.descriptionProperty = [NSString stringWithFormat:@"%@", [checkIn objectForKey:@"descriptionproperty"]];
-                NSString *latitudeString = [NSString stringWithFormat:@"%@",[[checkIn objectForKey:@"location"] objectAtIndex:0]];
-                NSString *longitudeString = [NSString stringWithFormat:@"%@",[[checkIn objectForKey:@"location"] objectAtIndex:1]];
-                newCheckIn.location =[[NSArray alloc] initWithObjects:
-                                      [f numberFromString:latitudeString],
-                                      [f numberFromString:longitudeString],
-                                      nil];
-                NSString *dateString =[NSString stringWithFormat:@"%@",[checkIn objectForKey:@"time"]];
-                newCheckIn.time = [dateFormatter dateFromString:dateString];
-                [_checkIns addObject:newCheckIn];
-            }
+//            NSLog(@"%@ %@", response, responseObject);
+            [self mapCheckIns:responseObject];
+            [self displayCheckIns];
         }
     }];
     [dataTask resume];
+
 }
 
+//maps response to CheckIn model
+-(void)mapCheckIns:(NSDictionary *)responseObject{
+    //number and dateformatter to convert strings to nsnumber and nsdate
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //            [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+    //            [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSz"];
+    
+    for(id checkIn in [responseObject objectForKey:@"data"]){
+        CheckIn *newCheckIn = [[CheckIn alloc] init];
+        newCheckIn.id = [[NSString stringWithFormat:@"%@", [checkIn objectForKey:@"id"]] integerValue];
+        newCheckIn.userId = [[NSString stringWithFormat:@"%@", [checkIn objectForKey:@"userid"]] integerValue];
+        newCheckIn.descriptionProperty = [NSString stringWithFormat:@"%@", [checkIn objectForKey:@"descriptionproperty"]];
+        NSString *latitudeString = [NSString stringWithFormat:@"%@",[[checkIn objectForKey:@"location"] objectAtIndex:0]];
+        NSString *longitudeString = [NSString stringWithFormat:@"%@",[[checkIn objectForKey:@"location"] objectAtIndex:1]];
+        newCheckIn.coordinate = CLLocationCoordinate2DMake([[f numberFromString:latitudeString] doubleValue], [[f numberFromString:longitudeString] doubleValue]);
+        NSString *dateString =[NSString stringWithFormat:@"%@",[checkIn objectForKey:@"time"]];
+        newCheckIn.time = [dateFormatter dateFromString:dateString];
+        [_checkIns addObject:newCheckIn];
+    }
+}
+
+//Grabs all check ins to display in map
+-(void)displayCheckIns{
+    _mapView.delegate = self;
+    for(CheckIn *checkIn in _checkIns){
+//        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+//        point.coordinate = coord;
+        checkIn.title = @"Look!";
+        checkIn.subtitle = @"Under there!";
+        [_mapView addAnnotation:checkIn];
+        [_mapView selectAnnotation:checkIn animated:NO];
+    }
+    
+}
+
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[CheckIn class]])
+    {
+        // Try to dequeue an existing pin view first.
+        MKPinAnnotationView*    pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+        
+        if (!pinView)
+        {
+            // If an existing pin view was not available, create one.
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                      reuseIdentifier:@"CustomPinAnnotationView"];
+            pinView.pinColor = MKPinAnnotationColorRed;
+            pinView.animatesDrop = YES;
+            pinView.canShowCallout = YES;
+            
+            // If appropriate, customize the callout by adding accessory views (code not shown).
+            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+            pinView.rightCalloutAccessoryView = rightButton;
+            
+//            UIImageView *myCustomImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"me2.jpg"]];
+//                pinView.leftCalloutAccessoryView = myCustomImage;
+        }
+        else
+            pinView.annotation = annotation;
+        
+        return pinView;
+    }
+    
+    return nil;
+}
+
+
+#pragma mark - MapKit and location
+
+-(void)startLocationManager{
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager requestWhenInUseAuthorization];
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.distanceFilter = 500;
+    [_locationManager startUpdatingLocation];
+    [self panToUser];
+}
+
+-(void)panToUser{
+    _mapView.showsUserLocation = YES;
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(_locationManager.location.coordinate.latitude, _locationManager.location.coordinate.longitude);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(center, 1000, 1000);
+    [_mapView setRegion:region animated:YES];
+}
 @end
 

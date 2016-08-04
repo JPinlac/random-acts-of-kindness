@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-@interface CheckIn : NSObject
+@interface CheckIn : NSObject <MKAnnotation>
 @property NSInteger id;
 @property NSDate *time;
-@property NSArray *location;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+//@property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property NSInteger userId;
 @property NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
 @end
