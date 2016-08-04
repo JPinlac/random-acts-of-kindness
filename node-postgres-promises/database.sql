@@ -1,7 +1,8 @@
 DROP DATABASE IF EXISTS rak;
 CREATE DATABASE rak;
-
 \c rak;
+
+ALTER DATABASE rak SET timezone TO 'America/New_york';
 
 CREATE TABLE cards (
 	ID 			SERIAL PRIMARY KEY,
@@ -23,10 +24,13 @@ CREATE TABLE users (
 );
 
 INSERT INTO cards (checkIns)
-	VALUES ('{1}');
+	VALUES ('{1,2,3,4,5,6,7,8,9,10}');
 
 INSERT INTO checkIn (location, userId, descriptionProperty)
- 	VALUES ('{48.123, -12.122}', 1, 'IT WORKS');
+ 	VALUES ('{42.365150, -83.071439}', 1, 'IT WORKS');
+
+INSERT INTO checkIn (location, userId, descriptionProperty)
+	VALUES ('{42.365213, -83.072989}', 1, 'AGAIN');
 
 INSERT INTO users (fbUserId)
  	VALUES (1231);
